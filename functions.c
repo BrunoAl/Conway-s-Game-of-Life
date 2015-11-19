@@ -23,7 +23,7 @@ void checkNeighbours(int x, int y, int limitX, int limitY, cel **table) {
 			if(i >= limitX)
 				xi = 0;
 			
-			if(table[xi][yj].alive == ALIVE)
+			if(table[xi][yj].status == ALIVE)
 				neighbours++;
 		}
  	}
@@ -34,17 +34,17 @@ void checkNeighbours(int x, int y, int limitX, int limitY, cel **table) {
 
 void checkAlive(int x, int y, cel **table) {
 
-	if(table[x][y].alive == ALIVE) {
+	if(table[x][y].status == ALIVE) {
 
 		if(table[x][y].neighbours >= 4 || table[x][y].neighbours < 2) {
-			table[x][y].alive = DEAD;
+			table[x][y].status = DEAD;
 		}
 	}
 	
 	else {
 		
 		if(table[x][y].neighbours == 3) {
-			table[x][y].alive = ALIVE;
+			table[x][y].status = ALIVE;
 		}
 	}
 }
@@ -73,15 +73,15 @@ void updateTable(int x, int y, cel **table) {
     for(i = 0; i < x; i++) {
     	for(j = 0; j < y; j++) {
 				
-				if(table[i][j].alive == ALIVE) {
+				if(table[i][j].status == ALIVE) {
 
 					if(table[i][j].neighbours >= 4 || table[i][j].neighbours < 2) {
-						table[i][j].alive = DEAD;
+						table[i][j].status = DEAD;
 					}
 				}
 				else {
 					if(table[i][j].neighbours == 3)
-						table[i][j].alive = ALIVE;
+						table[i][j].status = ALIVE;
 				}
     	}
     }
@@ -102,7 +102,7 @@ void displayTable( int x, int y, cel **table, int neighbours) {
         for(j = 0; j < y; j++) {
 
 			if(neighbours == 0)
-			    printf(" %02c", table[i][j].alive);
+			    printf(" %02c", table[i][j].status);
 			else
        	      	printf(" %02d", table[i][j].neighbours);
     	}
@@ -135,7 +135,7 @@ cel **defineTable(int x, int y) {
    	// inicializar todas as celulas mortas e sem vizinhos.
 	for (i = 0; i < x; i++) {
 		for(j = 0; j < y; j++) {
-			table[i][j].alive = DEAD;
+			table[i][j].status = DEAD;
    			table[i][j].neighbours = 0;
 		}
 	}
@@ -164,7 +164,7 @@ void insertCel(int x, int y, cel **table)
         else {
 			printf("\n");		
 
-        	table[j][i].alive = ALIVE;
+        	table[j][i].status = ALIVE;
 
         	displayTable(x, y, table, 0);
         }
@@ -214,7 +214,7 @@ void saveTable(int x, int y, int currentGen, cel **table) {
 		int i, j;
 		for(i = 0; i < x; i++) {
 			for(j = 0; j < y; j++) {
-				fprintf(file, "%c\n", table[i][j].alive);
+				fprintf(file, "%c\n", table[i][j].status);
 			}
 		}
 		fclose(file);
@@ -232,7 +232,7 @@ cel **loadTable(int *x, int *y, int *currentGen) {
 
 	for(i = 0; i < *x; i++) {
 		for(j = 0; j < *y; j++)
-			fscanf(file, "%c\n", &table[i][j].alive);
+			fscanf(file, "%c\n", &table[i][j].status);
 	}
 
 	fclose(file);
@@ -245,8 +245,8 @@ void gameMenu(int x, int y, int currentGen, cel **table) {
     int option;
 
     printf("\n--%da Geracao--\n", currentGen);
-    displayTable(x, y, table, 0); 				 			                                      
-    printf("\nAvancar para a proxima geracao (1)\nInserir Celula (2)\nSalvar      (3)\nSair do jogo                   (4)\nSelecione uma opcao: ");
+    displayTable(x, y, table, 0);                                              
+    printf("\nAvancar para a proxima geracao (1)\nInserir Celula                 (2)\nSalvar      				     (3)\nSair do jogo                   (4)\nSelecione uma opcao: ");
     scanf("%d", &option);
 
 	switch(option){

@@ -10,7 +10,7 @@
 #define DEAD '0'
 
 typedef struct _cel {
-    char alive;
+    char status;
     int neighbours;
 } cel;
 
