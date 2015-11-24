@@ -102,7 +102,7 @@ void displayTable( int x, int y, cel **table, int neighbours) {
         for(j = 0; j < y; j++) {
 
 			if(neighbours == 0)
-			    printf(" %02c", table[i][j].status);
+			    printf(" %c", table[i][j].status);
 			else
        	      	printf(" %02d", table[i][j].neighbours);
     	}
