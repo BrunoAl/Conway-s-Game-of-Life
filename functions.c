@@ -156,7 +156,7 @@ void insertCel(int x, int y, cel **table)
         if(i == -1 && j == -1)
         	//option = 0; // sai do loop
         	return;
-        else if (i >= y || j >= x) {
+        else if (i >= y || j >= x || (i < 0 && i != -1) || (j < 0 && j != -1)) {
             printf("\n\nCoordenada invalida.\n\n");
             option = 1;
             //continue;
