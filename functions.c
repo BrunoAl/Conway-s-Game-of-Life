@@ -66,7 +66,7 @@ void updateTable(int x, int y, cel **table) {
     caso x+1/y+1 seja maior q o valor máximo da tabela, utilizar 0.
     */
 
-    
+
     // testar todas as celulas;
     int i, j;
 
@@ -96,18 +96,18 @@ void displayTable( int x, int y, cel **table, int neighbours) {
 
     int i, j;
 
-    printf("    ");
+    printf("     ");
     for(i = 0; i < y; i++) {
         printf(" %02d", i);
     }
     printf(" x");
     printf("\n\n");
     for(i = 0; i < x; i++) {
-        printf("%02d  ", i);
+        printf(" %02d  ", i);
         for(j = 0; j < y; j++) {
 
 			if(neighbours == 0)
-			    printf(" %c", table[i][j].status);
+			    printf(" %02c", table[i][j].status);
 			else
        	      	printf(" %02d", table[i][j].neighbours);
     	}
