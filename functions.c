@@ -11,6 +11,7 @@ void checkNeighbours(int x, int y, int limitX, int limitY, cel **table) {
 			if(j == y && i == x)
 				continue;
 			
+			// check if it is on the board of the display
 			if(j < 0)
 				yj = limitY - 1;
 			
@@ -33,6 +34,8 @@ void checkNeighbours(int x, int y, int limitX, int limitY, cel **table) {
 }
 
 void checkAlive(int x, int y, cel **table) {
+
+	// You live or you die.
 
 	if(table[x][y].status == ALIVE) {
 
@@ -62,6 +65,8 @@ void updateTable(int x, int y, cel **table) {
     caso x-1/y-1 seja menor q 0, utilizar o valor máximo da tabela.
     caso x+1/y+1 seja maior q o valor máximo da tabela, utilizar 0.
     */
+
+    
     // testar todas as celulas;
     int i, j;
 
@@ -73,16 +78,16 @@ void updateTable(int x, int y, cel **table) {
     for(i = 0; i < x; i++) {
     	for(j = 0; j < y; j++) {
 				
-				if(table[i][j].status == ALIVE) {
+			if(table[i][j].status == ALIVE) {
 
-					if(table[i][j].neighbours >= 4 || table[i][j].neighbours < 2) {
-						table[i][j].status = DEAD;
-					}
+				if(table[i][j].neighbours >= 4 || table[i][j].neighbours < 2) {
+					table[i][j].status = DEAD;
 				}
-				else {
-					if(table[i][j].neighbours == 3)
-						table[i][j].status = ALIVE;
-				}
+			}
+			else {
+				if(table[i][j].neighbours == 3)
+					table[i][j].status = ALIVE;
+			}
     	}
     }
 }
