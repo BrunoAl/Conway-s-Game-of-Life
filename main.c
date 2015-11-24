@@ -30,12 +30,6 @@ int main()
         	return 0;
 	}
 
-    if(menuOption == 1) {
-    	//loadTableSize(&x, &y);
-    }
-    if(menuOption == 0){
-			
-    }
 	
     gameMenu(x, y, currentGen, table);
 		printf("\n\nFechando o Jogo...\n\n");
