@@ -6,8 +6,8 @@
 #include <time.h>
 #define HEIGHT 10
 #define WIDTH 10
-#define ALIVE '*'
-#define DEAD '0'
+#define ALIVE '#'
+#define DEAD '.'
 
 typedef struct _cel {
     char status;
