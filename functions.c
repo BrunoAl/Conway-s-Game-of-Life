@@ -246,7 +246,7 @@ void gameMenu(int x, int y, int currentGen, cel **table) {
 
     printf("\n--%da Geracao--\n", currentGen);
     displayTable(x, y, table, 0);                                              
-    printf("\nAvancar para a proxima geracao (1)\nInserir Celula                 (2)\nSalvar      				     (3)\nSair do jogo                   (4)\nSelecione uma opcao: ");
+    printf("\nAvancar para a proxima geracao (1)\nInserir Celula                 (2)\nSalvar                         (3)\nSair do jogo                   (4)\nSelecione uma opcao: ");
     scanf("%d", &option);
 
 	switch(option){
