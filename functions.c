@@ -113,7 +113,7 @@ void displayTable( int x, int y, cel **table, int neighbours) {
     	}
         printf("\n");
     }
-	printf("y\n");
+	printf("  y\n");
 }
 
 cel **defineTable(int x, int y) {
@@ -159,8 +159,8 @@ void insertCel(int x, int y, cel **table)
         printf("\nEscolha uma celula para deixar viva (x y): \n(-1 -1) - para terminar o input!\n-> ");
         scanf("%d %d", &i, &j);
         if(i == -1 && j == -1)
-        	//option = 0; // sai do loop
         	return;
+        
         else if (i >= y || j >= x || (i < 0 && i != -1) || (j < 0 && j != -1)) {
             printf("\n\nCoordenada invalida.\n\n");
             option = 1;
@@ -188,7 +188,7 @@ int mainMenu() {
     // save in a txt file
 	FILE *file;
     if(i == 1) {
-		if(file =  fopen("saveFile.txt", "r"))
+		if(file =  fopen("saveGame.txt", "r"))
 			fclose(file);
 
 	else {
@@ -214,7 +214,7 @@ void saveTable(int x, int y, int currentGen, cel **table) {
 	scanf("%d", &save);
 
 	if(save == 1) {
-		file = fopen("saveFile.txt", "w");
+		file = fopen("saveGame.txt", "w");
 		fprintf(file, "%d %d %d \n", x, y, currentGen);
 		int i, j;
 		for(i = 0; i < x; i++) {
@@ -231,7 +231,7 @@ cel **loadTable(int *x, int *y, int *currentGen) {
 	cel **table;
 	FILE *file;
 	int i, j;
-	file = fopen("saveFile.txt", "r");
+	file = fopen("saveGame.txt", "r");
 	fscanf(file, "%d %d %d\n", x, y, currentGen);
 	table = defineTable(*x, *y);
 
